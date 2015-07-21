@@ -1,0 +1,55 @@
+.navbar {
+	background-color: @sub-color;
+	border-radius: 0;
+	border: none;
+	color: #fff;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #fff;
+}
+
+.navbar-default .navbar-brand {
+	color: @brand-color;
+}
+
+.navbar-default .navbar-brand:hover, 
+.navbar-default .navbar-brand:focus {
+	color: @brand-color;
+}
+
+.navbar-default .navbar-nav>li>a:hover, 
+.navbar-default .navbar-nav>li>a:focus {
+	color: lighten(@sub-color, 50%);
+}
+
+.navbar-default .navbar-nav>.active>a, 
+.navbar-default .navbar-nav>.active>a:hover, 
+.navbar-default .navbar-nav>.active>a:focus {
+	color: #fff;
+	background-color: @main-color;
+}
+
+.navbar-default .navbar-toggle {
+	border-color: @main-color;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #FFF;
+}
+
+.navbar-default .navbar-toggle:hover, 
+.navbar-default .navbar-toggle:focus {
+	background-color: @main-color;
+}
+
+.navbar-default .navbar-collapse, 
+.navbar-default .navbar-form {
+	border-color: @main-color;
+}
+
+.navbar-brand {
+	padding-left: 140px;
+	background: url('/assets/images/logo_small.png') left 40% no-repeat;
+	margin-left: 5px !important;
+}

@@ -1,0 +1,6 @@
+{
+  "name": "GA2SA Project",
+  "description": "Utilize Heroku to Push Google Analytics Data into Analytics Cloud (Developed By Cervello Inc. Http://mycervello.com)",
+  "repository": "https://github.com/Cervello/GA2SA-Salesforce-Developer-Day-July2015/tree/master/GA2SA/Codebase",
+  "keywords": ["salesforce", "google-analytics", "playframework", "wave", "Salesforce Analytics", "cervello", "cervello inc"]
+}

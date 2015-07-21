@@ -1,0 +1,19 @@
+language: java
+env:
+  - HEROKU_LOGIN=login \
+    HEROKU_PASSWORD=password \
+    HEROKU_APP=app-name
+install:
+  - sudo wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+  - sudo apt-get install expect
+script:
+  - chmod a+x ./herokuEnviroment.sh
+  - chmod a+x ./herokuLogin.exp
+  - ./herokuLogin.exp
+  - ./herokuEnviroment.sh
+notifications:
+  email: false
+deploy:
+  provider: heroku
+  api_key: "<ssh-key>"
+  app: ${HEROKU_APP}

@@ -1,0 +1,48 @@
+@import play.libs.Json;
+@import com.fasterxml.jackson.databind.JsonNode;
+
+@(params: Map[String, JsonNode])
+<h1 class="content__header">Manage Profile</h1>
+<section class="content__main"></section>
+
+@views.html.components.backbone.templates.profileSettings()
+
+<script>
+	$(function () {
+
+		if (!window.Models) window.Models = {};
+		if (!window.Collections) window.Collections = {};
+		if (!window.Views) window.Views = {};
+		
+		var Collections = window.Collections;
+		var Models		= window.Models;
+		
+		Models.Profile = Backbone.Model.extend({
+			urlRoot : '/profile',
+			defaults : @Html(Json.stringify(params.get("user"))),
+			validation : {
+				username : {
+					required : true
+				},
+				
+				emailAddress : {
+					required : true
+				},
+				
+				firstName : {
+					required : true
+				},
+				
+				lastName : {
+					required : true
+				},
+				
+				password : {
+					required : true
+				}
+			}
+		});
+	});
+	
+</script>
+<script src='@routes.Assets.at("javascripts/pages/settings/profile.js")'></script>

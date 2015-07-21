@@ -1,0 +1,88 @@
+@import play.libs.Json;
+@import com.fasterxml.jackson.databind.JsonNode;
+
+@(params: Map[String, JsonNode])
+
+<h1 class="content__header">Manage Google Analytics Profiles</h1>
+<section class="content__main"></section>
+<div class="modals"></div>
+@views.html.components.backbone.templates.common()
+@views.html.components.backbone.templates.googleSettings()
+
+<script>
+	$(function () {
+
+		if (!window.Models) window.Models = {};
+		if (!window.Collections) window.Collections = {};
+		if (!window.Views) window.Views = {};
+		
+		var Collections = window.Collections;
+		var Models		= window.Models;
+		
+		var defaultProfile = @Html(Json.stringify(params.get("defaultProfile")));
+		
+		defaultProfile.name = "";
+		
+		Models.Profile = Backbone.Model.extend({
+			urlRoot : '/google/profile',
+			defaults : defaultProfile,
+			validation : {
+				name : {
+					required : true
+				},
+				
+				authProviderX509CertUrl : {
+					required : true,
+					pattern : 'url'
+				},
+				
+				authUri : {
+					required : true,
+					pattern : 'url'
+				},
+				
+				clientEmail : {
+					required : true,
+					pattern : 'email'
+				},
+				
+				clientId : {
+					required : true
+				},
+				
+				clientSecret : {
+					required : true
+				},
+				
+				clientX509CertUrl : {
+					required : true,
+					pattern : 'url'
+				},
+				
+				connected : {
+					required : true,
+				},
+				
+				redirectUris : {
+			    	required : true,
+			    	msg: 'Please enter an list redirects URIs'
+			    },
+				
+				tokenUri : {
+					required : true,
+					pattern : 'url'
+				}
+			}
+		});
+		
+		Models.ApiSettings = Backbone.Model.extend({});
+		
+		Collections.Profiles = new Backbone.Collection([], {
+			model 	: Models.Profile
+		});
+		
+		Collections.Profiles.reset(@Html(Json.stringify(params.get("profiles"))));
+	});
+	
+</script>
+<script src='@routes.Assets.at("javascripts/pages/settings/google.js")'></script>

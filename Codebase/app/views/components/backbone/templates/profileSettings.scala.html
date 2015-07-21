@@ -1,0 +1,23 @@
+<script type="text/template" id="profile">
+	<div class="user-form__first-name form-group">
+    	<label for="first_name">First name:</label>
+    	<input type="text" class="form-control" id="first_name" name="firstName" placeholder="Enter first name" value="<%= firstName %>" />
+  	</div>
+	<div class="user-form__last-name form-group">
+    	<label for="last_name">Last name:</label>
+    	<input type="text" class="form-control" id="last_name" name="lastName" placeholder="Enter last name" value="<%= lastName %>" />
+  	</div>
+	<div class="user-form__username form-group">
+    	<label for="username">Username:</label>
+    	<input type="text" class="form-control" id="username" name="username" placeholder="Enter username" value="<%= username %>" />
+  	</div>
+	<div class="user-form__email-address form-group">
+    	<label for="email_address">Email address:</label>
+    	<input type="email" class="form-control" id="email_address" name="emailAddress" placeholder="Enter email" value="<%= emailAddress %>" />
+  	</div>
+	<div class="user-form__password form-group">
+    	<label for="password">Password:</label>
+    	<input type="password" class="form-control" id="password" name="password" placeholder="Enter new password" value="<%= password %>" />
+  	</div>
+  	<button type="submit" class="button button_type_save btn btn-primary">Save</button>
+</script>

@@ -1,0 +1,58 @@
+<script type="text/template" id="job">
+	<td class='job__id table__cell'> 
+		<%= id %> 
+	</td>
+	<td class='job__name table__cell'> 
+		<%= name %> 
+	</td>
+	<td class='job__ga-profile table__cell'> 
+		<%= googleAnalyticsProfile.name %> 
+	</td>
+	<td class='job__sa-profile table__cell'> 
+		<%= salesforceAnalyticsProfile.name %> 
+	</td>
+	<td class='job__start-date table__cell'> 
+		<%= new Date(startTime).toLocaleString("en-US") %> 
+	</td>
+	<td class='job__status job__status_type_<%= status.toLowerCase() %> table__cell' title="<%= status.toLowerCase() %>"></td>
+	<td class='job__user table__cell'> 
+		<%= user %> 
+	</td>
+</script>
+
+<script type="text/template" id="scheduler">
+	<label class="scheduler__label">Scheduler</label>
+	<ul class="nav nav-pills" role="tablist">
+		<li role="presentation" class="active"><a href="#immediately" aria-controls="immediately" role="tab" data-toggle="tab">Immediately</a></li>
+		<li role="presentation"><a href="#delayed" aria-controls="delayed" role="tab" data-toggle="tab">Delayed</a></li>
+		<li role="presentation"><a href="#repeated" aria-controls="repeated" role="tab" data-toggle="tab">Repeated</a></li>
+	</ul>
+	<div class="tab-content">
+		<div role="tabpanel" class="scheduler__immediately tab-pane active" id="immediately">Time will be assigned automatically</div>
+		<div role="tabpanel" class="scheduler__delayed tab-pane row" id="delayed">
+			<div class="form-group col-xs-12">
+				<label for="delayStart">Start time</label>
+				<input type="text" class="scheduler__time form-control" id="delayStart" name="delayStart">
+			</div>
+		</div>
+		<div role="tabpanel" class="scheduler__repeated tab-pane row" id="repeated">
+			<div class="form-group col-xs-4">
+				<label for="repeatStart">Start time</label>
+				<input type="text" class="scheduler__time form-control" id="repeatStart" name="repeatStart">
+			</div>
+			<div class="form-group col-xs-4">
+				<label for="period">Period</label>
+				<select class="scheduler__period form-control" id="period" name="period">
+					<option value="day">Every day</option>
+					<option value="week">Every week</option>
+					<option value="month">Every month</option>
+				</select>
+			</div>
+			<div class="checkbox col-xs-4">
+				<label>
+					<input type="checkbox" id="previousData" name="previousData"> Include Previous Data
+				</label>
+			</div>
+		</div>
+	</div>
+</script>

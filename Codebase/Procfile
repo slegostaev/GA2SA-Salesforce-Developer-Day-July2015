@@ -1,0 +1,1 @@
+web: target/universal/stage/bin/ga2sa -Dhttp.port=$PORT

@@ -1,0 +1,71 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           				controllers.Application.index()
+
+# Sign In page
+
+GET		/signin										controllers.Authorization.ga2saSignIn()
+POST	/signin										controllers.Authorization.ga2saSignIn()
+
+# Sign Out
+
+GET		/signout									controllers.Authorization.ga2saSignOut()
+
+# Dashboard
+
+GET		/dashboard									controllers.Dashboard.index()
+
+# Job
+
+POST	/job										controllers.JobsManager.create()	
+
+# Settings
+
+GET		/settings									controllers.Settings.index()
+GET		/settings/profile							controllers.Settings.profile()
+GET		/settings/users								controllers.Settings.users()
+GET		/settings/google							controllers.Settings.ga()
+GET		/settings/salesforce						controllers.Settings.sa()
+
+# User Settings API
+
+PUT		/profile/:id								controllers.settings.ProfileSettings.update(id)
+
+# Users Settings API
+
+POST	/users										controllers.settings.UsersSettings.add()
+DELETE	/users/:id									controllers.settings.UsersSettings.delete(id)
+PUT		/users/:id									controllers.settings.UsersSettings.update(id)
+
+# Google Settings API
+GET		/google/profile/:id							controllers.settings.GoogleAnalyticsSettings.get(id)
+POST	/google/profile								controllers.settings.GoogleAnalyticsSettings.add()
+POST	/google/profile/connect/:id					controllers.settings.GoogleAnalyticsSettings.connect(id)
+POST	/google/profile/disconnect/:id				controllers.settings.GoogleAnalyticsSettings.disconnect(id)
+DELETE	/google/profile/:id							controllers.settings.GoogleAnalyticsSettings.delete(id)
+PUT		/google/profile/:id							controllers.settings.GoogleAnalyticsSettings.update(id)
+
+
+# Salesforce Settings API
+
+POST	/salesforce/profile							controllers.settings.SalesforceAnalyticsSettings.add()
+DELETE	/salesforce/profile/:id						controllers.settings.SalesforceAnalyticsSettings.delete(id)
+PUT		/salesforce/profile/:id						controllers.settings.SalesforceAnalyticsSettings.update(id)
+
+
+# Tokens
+GET 	/google_signin								controllers.Authorization.googleSignIn()
+
+# Wrapper Google Analytics API
+
+GET 	/google/profile/:id/accounts				controllers.GoogleAnalyticsAPI.getAccounts(id)
+GET 	/google/profile/:id/properties/:accId		controllers.GoogleAnalyticsAPI.getProperties(id, accId)
+GET 	/google/profile/:id/profiles/:accId/:propId	controllers.GoogleAnalyticsAPI.getProfiles(id, accId, propId)
+GET 	/google/profile/:id/dimensions				controllers.GoogleAnalyticsAPI.getDimensions(id)
+GET 	/google/profile/:id/metrics					controllers.GoogleAnalyticsAPI.getMetrics(id)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               				controllers.Assets.at(path="/public", file)

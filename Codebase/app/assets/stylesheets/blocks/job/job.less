@@ -1,0 +1,24 @@
+.job__status:after {
+	content: "";
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	background: #000;
+	left: 50%;
+	margin-left: -5px;
+	top: 50%;
+	margin-top: -5px;
+	border-radius: 10px;
+}
+
+.job__status_type_ok:after {
+	background: #07df33;
+}
+
+.job__status_type_pending:after {
+	background: #e4e134;
+}
+
+.job__status_type_fail:after {
+	background: #ed1515;
+}

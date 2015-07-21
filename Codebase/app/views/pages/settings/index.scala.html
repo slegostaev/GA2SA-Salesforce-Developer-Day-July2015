@@ -1,0 +1,20 @@
+@import com.fasterxml.jackson.databind.JsonNode;
+
+@(pageName: String, params: Map[String, JsonNode])
+@main("Settings") {
+	<header class="header">
+		@components.topMenu("settings")
+	</header>
+	<main class="main main_contain-sidebar">
+		@components.sideBar(pageName)
+		<div class="content ">
+			@pageName match {
+				case "profile" 	=> { @pages.settings.profile(params) }
+				case "users" 	=> { @pages.settings.users(params) }
+				case "ga" 		=> { @pages.settings.google(params) }
+				case "sa" 		=> { @pages.settings.salesforce(params) }
+				case _ 			=> {}
+			}
+		</div>
+	</main>
+}

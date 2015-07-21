@@ -1,0 +1,54 @@
+<script type="text/template" id="profile">
+	<td class='profile__name table__cell'> 
+		<%= name %> 
+	</td>  
+	<td class='profile__action table__cell table__cell_type_action'> 
+		<button class='profile__edit-btn btn btn-sm btn-info'>Edit</button> 
+		<button class='profile__delete-btn btn btn-sm btn-danger'>Delete</button>
+		<% if (connected) { %>
+			<button class='profile__disconnect-btn btn btn-sm btn-warning'>Disconnect</button> 
+		<% } else { %>
+			<button class='profile__connect-btn btn btn-sm btn-success'>Connect</button> 
+		<% } %>
+	</td>	
+</script>
+
+<script type="text/template" id="profile-form">
+	<div class="form-group">
+    	<label for="profile-name">Profile name</label>
+    	<input type="text" class="form-control" id="profile-name" name="name" placeholder="Profile name" value="<%= name %>" autofocus>
+  	</div>
+  	<div class="form-group">
+    	<label for="auth-uri">Auth URI</label>
+    	<input type="url" class="form-control" id="auth-uri" name="authUri" placeholder="Auth URI" value="<%= authUri %>">
+  	</div>
+	<div class="form-group">
+    	<label for="token-uri">Token URI</label>
+    	<input type="url" class="form-control" id="token-uri" name="tokenUri" placeholder="Token URI" value="<%= tokenUri %>">
+  	</div>
+	<div class="form-group">
+    	<label for="client-id">Client Id</label>
+    	<input type="text" class="form-control" id="client-id" name="clientId" placeholder="Client Id" value="<%= clientId %>">
+  	</div>
+	<div class="form-group">
+    	<label for="client-email">Client Email</label>
+    	<input type="email" class="form-control" id="client-email" name="clientEmail" placeholder="Client Email" value="<%= clientEmail %>">
+  	</div>
+	<div class="form-group">
+    	<label for="client-secret">Client Secret</label>
+    	<input type="text" class="form-control" id="client-secret" name="clientSecret" placeholder="Client Secret" value="<%= clientSecret %>">
+  	</div>
+	<div class="form-group">
+    	<label for="auth-provider-x509-cert-url">Auth Provider X509 Cert Url</label>
+    	<input type="text" class="form-control" id="auth-provider-x509-cert-url" name="authProviderX509CertUrl" placeholder="Auth Provider X509 Cert Url" value="<%= authProviderX509CertUrl %>">
+  	</div>
+	<div class="form-group">
+    	<label for="client-x509-cert-url">Client X509 Cert Url</label>
+    	<input type="text" class="form-control" id="client-x509-cert-url" name="clientX509CertUrl" placeholder="Client X509 Cert Url" value="<%= clientX509CertUrl %>">
+  	</div>
+	<div class="form-group">
+    	<label for="redirect-uris">Redirect Uris</label>
+    	<textarea class="form-control" id="redirect-uris" name="redirectUris" rows="4"><%= redirectUris.join("\n") %></textarea>
+		<span id="redirect-uris-help" class="help-block">Each URL must be located on a separate line.</span>  	
+</div>
+</script>

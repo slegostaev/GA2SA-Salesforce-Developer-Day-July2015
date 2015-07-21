@@ -1,0 +1,57 @@
+<script type="text/template" id="input">
+    <label for="<%= id %>"><%= title %></label>
+    <input type="<%= type %>" class="form-control" id="<%= id %>" name="<%= id %>" autofocus>
+</script>
+
+<script type="text/template" id="select">
+    <label for="<%= id %>"><%= title %></label>
+    <select class="form-control" id="<%= id %>" name="<%= id %>" <% if (multiple) { %><%='multiple'%><% } %> autofocus>
+		<% if (groupped) { %>
+			<% _.each(items, function (group, groupName) { %>
+				<optgroup label="<%= groupName %>">
+					<% _.each(group, function (item) { %>
+						<option value='<%= item.id %>'><%= item.name || item.uiName %></option>
+					<% }); %>
+				</optgroup>
+			<% }); %>
+		<% } else { %>
+			<% _.each(items, function (item) { %>
+				<option value='<%= item.id %>'><%= item.name || item.uiName %></option>
+			<% }); %>
+		<% } %>
+	</select>
+</script>
+
+<script type="text/template" id="table">
+	<thead class='table__head'>
+		<tr class='table__row'>
+			<% _.each(headers, function (header) { %>
+				<th class='table__cell'><%= header %></th>
+			<% }) %> 
+		</tr> 
+	</thead>  
+	<tbody class='table__body'></tbody>
+</script>
+
+<script type="text/template" id="modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       			<h4 class="modal-title"><%= title %></h4>
+      		</div>
+      		<div class="modal-body"></div>
+      		<div class="modal-footer">
+        		<button type="button" class="button button_type_cancel btn btn btn-default" data-dismiss="modal">Cancel</button>
+        		<button type="button" class="button button_type_save btn btn-primary">Save</button>
+      		</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/template" id="alert">
+ 	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	<strong><%= title%>!</strong> <%= text %>
+</script>
+
+<script src='@routes.Assets.at("javascripts/pages/backbone-common.js")'></script>

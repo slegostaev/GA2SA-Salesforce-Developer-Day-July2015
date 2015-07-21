@@ -1,0 +1,19 @@
+.button {}
+.button_type_add {
+	margin-bottom: 10px;
+}
+
+.btn-primary {
+	background-color: @sub-color;
+	border-color: darken(@sub-color, 10%);
+}
+
+.btn-primary:hover, 
+.btn-primary:focus, 
+.btn-primary.focus, 
+.btn-primary:active, 
+.btn-primary.active, 
+.open>.dropdown-toggle.btn-primary {
+	background-color: darken(@sub-color, 10%);
+	border-color: darken(@sub-color, 20%);
+}

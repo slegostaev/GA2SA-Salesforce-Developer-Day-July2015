@@ -1,0 +1,57 @@
+@import play.libs.Json;
+@import com.fasterxml.jackson.databind.JsonNode;
+
+@(params: Map[String, JsonNode])
+
+<h1 class="content__header">Manage Salesforce Analytics Profiles</h1>
+<section class="content__main"></section>
+
+@views.html.components.backbone.templates.common()
+@views.html.components.backbone.templates.salesforceSettings()
+
+<script>
+	$(function () {
+
+		if (!window.Models) window.Models = {};
+		if (!window.Collections) window.Collections = {};
+		if (!window.Views) window.Views = {};
+		
+		var Collections = window.Collections;
+		var Models		= window.Models;
+		
+		Models.Profile = Backbone.Model.extend({
+			urlRoot: '/salesforce/profile',
+			defaults : {
+				name : "",
+				username : "",
+				password : "",
+				applicationName : ""
+			},
+			
+			validation : {
+				name : {
+					required : true
+				},
+				
+				username : {
+					required : true
+				},
+				
+				password : {
+					required : true
+				},
+				
+				applicationName : {
+					required : true
+				},
+			}
+		});
+		Collections.Profiles = new Backbone.Collection([], {
+			model : Models.Profile
+		});
+		
+		Collections.Profiles.reset(@Html(Json.stringify(params.get("profiles"))));
+	});
+	
+</script>
+<script src='@routes.Assets.at("javascripts/pages/settings/salesforce.js")'></script>

@@ -1,0 +1,13 @@
+@main("Sign In") {
+<div class="container">
+	<form class="form-signin" method="post" action="/signin" style="max-width:350px; margin: 0 auto">
+		<img class="form-signin__logo" src="/assets/images/logo.png">
+		<h2 class="form-signin__heading">Please sign in</h2>
+		<label for="username" class="sr-only">Email address</label>
+		<input type="text" id="username" name="username" class="form-control" style="margin-bottom: 10px" placeholder="Username" required autofocus>
+		<label for="password" class="sr-only">Password</label>
+		<input type="password" id="password" name="password" class="form-control" style="margin-bottom: 10px" placeholder="Password" required>
+		<button class="btn btn-primary btn-block" type="submit">Sign in</button>
+	</form>
+</div>
+}

@@ -1,0 +1,10 @@
+@(activePage: String)
+<nav class='sidebar'>
+	<a class='sidebar__item @if(activePage == "profile") { sidebar__item_active }' href='@routes.Settings.profile'><i class='fa fa-user'></i></a>
+	@if(com.ga2sa.security.CheckAccesTemplates.hasAccess()) {
+		<a class='sidebar__item @if(activePage == "users") { sidebar__item_active }' href='@routes.Settings.users'><i class='fa fa-users'></i></a>
+		<a class='sidebar__item @if(activePage == "ga") { sidebar__item_active }' href='@routes.Settings.ga'><i class='fa fa-google'></i></a>
+		<a class='sidebar__item @if(activePage == "sa") { sidebar__item_active }' href='@routes.Settings.sa'><i class='ga2sa-icon-salesforce'></i></a>
+	}
+	
+</nav>

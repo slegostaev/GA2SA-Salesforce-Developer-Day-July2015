@@ -1,0 +1,72 @@
+@import play.libs.Json;
+@import com.fasterxml.jackson.databind.JsonNode;
+
+@(params: Map[String, JsonNode])
+<h1 class="content__header">Manage Users</h1>
+<section class="content__main"></section>
+
+@views.html.components.backbone.templates.common()
+@views.html.components.backbone.templates.usersSettings()
+
+<script>
+	$(function () {
+
+		if (!window.Models) window.Models = {};
+		if (!window.Collections) window.Collections = {};
+		if (!window.Views) window.Views = {};
+		
+		var Collections = window.Collections;
+		var Models		= window.Models;
+		
+		Models.User = Backbone.Model.extend({
+			urlRoot : '/users',
+			defaults : {
+				username : "",
+				emailAddress : "",
+				firstName : "",
+				lastName : "",
+				password : "",
+				role : "USER",
+				isActive : true
+			},
+			
+			validation : {
+				username : {
+					required : true
+				},
+				
+				emailAddress : {
+					required : true
+				},
+				
+				firstName : {
+					required : true
+				},
+				
+				lastName : {
+					required : true
+				},
+				
+				password : {
+					required : true
+				},
+				
+				role : {
+					required : true
+				},
+				
+				isActive : {
+					required : true
+				},
+			}
+		});
+		
+		Collections.Users = new Backbone.Collection([], {
+			model 	: Models.User
+		});
+		
+		Collections.Users.reset(@Html(Json.stringify(params.get("users"))));
+	});
+	
+</script>
+<script src='@routes.Assets.at("javascripts/pages/settings/users.js")'></script>

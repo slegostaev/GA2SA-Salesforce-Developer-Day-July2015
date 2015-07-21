@@ -1,0 +1,67 @@
+@import play.libs.Json;
+@import com.fasterxml.jackson.databind.JsonNode;
+
+@(params: Map[String, JsonNode])
+@main("Dashboard") {
+	<header class="header">
+		@components.topMenu("dashboard")
+	</header>
+	<main class="main">
+		<div class="content">
+			<h1 class="content__header">Manage jobs</h1>
+			<section class="content__main"></section>
+		</div>
+	</main>
+	@views.html.components.backbone.templates.common()
+	@views.html.components.backbone.templates.dashboard()
+	<script>
+		$(function () {
+	
+			if (!window.Models) window.Models = {};
+			if (!window.Collections) window.Collections = {};
+			if (!window.Views) window.Views = {};
+			
+			var Models 		= window.Models,
+				Collections = window.Collections;
+			
+			
+			Models.Job = Backbone.Model.extend({
+				urlRoot : '/job'
+			});
+			
+			Collections.Jobs = new Backbone.Collection([], {
+				model : Models.Job
+			});
+			
+			Collections.Jobs.reset(@Html(Json.stringify(params.get("jobs"))));
+			
+			// configuration google profiles
+			
+			Models.GoogleProfile = Backbone.Model.extend({
+				urlRoot : '/google/profile'
+			});
+			
+			Collections.GoogleProfiles = new Backbone.Collection([], {
+				model : Models.GoogleProfile
+			});
+			
+			Collections.GoogleProfiles.reset(@Html(Json.stringify(params.get("googleProfiles"))));
+			
+			
+			// configuration salesforce profiles
+			
+			Models.SalesforceProfile = Backbone.Model.extend({
+				urlRoot : '/salesforce/profile'
+			});
+			
+			Collections.SalesforceProfiles = new Backbone.Collection([], {
+				model : Models.SalesforceProfile
+			});
+			
+			Collections.SalesforceProfiles.reset(@Html(Json.stringify(params.get("salesforceProfiles"))));
+
+		});
+	
+	</script>
+	<script src='@routes.Assets.at("javascripts/pages/dashboard/index.js")'></script>
+}

@@ -1,0 +1,59 @@
+<script type="text/template" id="profile">
+	<td class='user__username table__cell'> 
+		<%= username %> 
+	</td>
+	<td class='user__email table__cell'> 
+		<%= emailAddress %> 
+	</td>
+	<td class='user__first-name table__cell'> 
+		<%= firstName %> 
+	</td>
+	<td class='user__last-name table__cell'> 
+		<%= lastName %> 
+	</td>
+	<td class='user__role table__cell'> 
+		<%= role %>
+	</td>
+	<td class='user__is-active table__cell'> 
+		<%= isActive ? 'Yes' : 'No' %> 
+	</td>  
+	<td class='user__action table__cell table__cell_type_action'> 
+		<button class='user__edit-btn btn btn-sm btn-info'>Edit</button> 
+		<button class='user__delete-btn btn btn-sm btn-danger'>Delete</button> 
+	</td>	
+</script>
+<script type="text/template" id="profile-form">
+	<div class="form-group">
+		<label for="username">Username</label>
+		<input type="text" class="form-control" id="username" name="username" placeholder="Enter username" value="<%= username %>" autofocus>
+	</div>
+	<div class="form-group">
+		<label for="email-address">Email address</label>
+		<input type="email" class="form-control" id="email-address" name="emailAddress" placeholder="Enter email address" value="<%= emailAddress %>">
+	</div>
+	<div class="form-group">
+    	<label for="first-name">First name</label>
+    	<input type="text" class="form-control" id="first-name" name="firstName" placeholder="Enter first name" value="<%= firstName %>">
+  	</div>
+	<div class="form-group">
+    	<label for="last-name">Last name</label>
+    	<input type="text" class="form-control" id="last-name" name="lastName" placeholder="Enter last name" value="<%= lastName %>">
+  	</div>
+	<div class="form-group">
+    	<label for="password">Password</label>
+    	<input type="password" class="form-control" id="password" name="password" placeholder="Enter password" value="<%= password %>">
+  	</div>
+	<div class="form-group">
+    	<label for="role">Role</label>
+    	<select class="form-control" id="role" name="role">
+			<% _.each(roles, function (standartRole) { %>
+				<option value='<%= standartRole %>' <% if (role === standartRole) { %><%='selected'%><% } %> ><%= standartRole %></option>
+			<% }); %>
+		</select>
+  	</div>
+	<div class="checkbox">
+		<label>
+			<input type="checkbox" id="is-active" name="isActive" <% if (isActive) { %><%='checked'%><% } %>> Is active?
+		</label>
+	</div>
+</script>

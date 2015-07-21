@@ -1,0 +1,28 @@
+<script type="text/template" id="profile">
+	<td class='profile__name table__cell'> 
+		<%= name %> 
+	</td>  
+	<td class='profile__action table__cell table__cell_type_action'> 
+		<button class='profile__edit-btn btn btn-sm btn-info'>Edit</button> 
+		<button class='profile__delete-btn btn btn-sm btn-danger'>Delete</button> 
+	</td>	
+</script>
+
+<script type="text/template" id="profile-form">
+	<div class="form-group">
+    	<label for="profile-name">Profile name</label>
+    	<input type="text" class="form-control" id="profile-name" name="name" placeholder="Enter profile name" value="<%= name %>" autofocus>
+  	</div>
+	<div class="form-group">
+    	<label for="username">Salesforce username</label>
+    	<input type="text" class="form-control" id="username" name="username" placeholder="Enter salesforce username" value="<%= username %>">
+  	</div>
+	<div class="form-group">
+    	<label for="password">Salesforce password</label>
+    	<input type="password" class="form-control" id="password" name="password" placeholder="Enter salesforce password" value="<%= password %>">
+  	</div>
+  	<div class="form-group">
+    	<label for="application-name">Salesforce application name</label>
+    	<input type="text" class="form-control" id="application-name" name="applicationName" placeholder="Enter salesforce application name" value="<%= applicationName %>">
+  	</div>
+</script>
